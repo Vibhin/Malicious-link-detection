@@ -1,6 +1,6 @@
 # Importing the libraries
 import matplotlib.pyplot as plt
-#import pickle
+import pickle
 
 import pandas as pd
 import numpy as np
@@ -10,6 +10,7 @@ import random
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
+from sklearn.model_selection import cross_val_score
 
 
 url_dataset = pd.read_csv("urldata.csv",',',error_bad_lines=False)
@@ -51,10 +52,12 @@ X = vectorizer.fit_transform(url_list)
 
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2, random_state=42)
 
-logit = LogisticRegression(solver='sag')	
+logit = LogisticRegression(solver='sag')
 logit.fit(X_train, y_train)
 
 #print("Accuracy ",logit.score(X_test, y_test))
+
+#print(cross_val_score(logit, X, y))
 
 # Saving model to disk
 pickle.dump(logit, open('model.pkl','wb'))
