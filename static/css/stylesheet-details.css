@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url("../images/AI-in-cybersecurity.png");
+
+    background-size: cover;
+    background-position: center;
+    
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    
+}
+
+.nav{
+    list-style-type: none;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.nav li{
+    display: inline;
+    margin-left: 5px;
+    
+}
+
+.nav li a{
+    text-decoration: none;
+    color: #ffffff;
+    padding: 5px 25px;
+    border: 1px;
+    border-radius: 8px;
+
+    transition: 0.5s ease;
+
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+}
+
+.nav li a:hover{
+    background: aqua;
+    color: #000000;
+
+    box-shadow: 0 0 5px #21ecf3, 0 0 5px #21ecf3,
+                0 0 10px #21ecf3, 0 0 10px #21ecf3;
+
+}
+
+.description{
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    margin: auto;
+
+    box-shadow: 0 0 5px #063fdb, 0 0 5px #063fdb,
+                0 0 10px #063fdb, 0 0 10px #063fdb;
+
+    height: 350px;
+    width: 450px;
+
+    
+    background-color: rgba(10, 10, 10, 0.9);
+
+    font-family: 'Ubuntu', sans-serif;
+    
+    
+}
+
+.description h1{
+    padding-top: 40px;
+    color: #ffffff;
+
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.description p{
+
+    text-align: left;
+
+    padding-top: 50px;
+    padding-left: 40px;
+    padding-right: 20px;
+
+    font-size: 20px;
+
+    color: #ffffff;
+}
+
+
+
+.alert-success {
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    margin: 100px auto;
+
+    height: 15px;
+    width: 300px;
+
+    padding: 10px;
+    background-color: rgba(10, 10, 10, 0.9);
+    
+    box-shadow: 0 0 5px #00c851, 0 0 5px #00c851,
+                0 0 10px #00c851, 0 0 10px #00c851;
+
+    color: white;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
