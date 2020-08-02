@@ -51,7 +51,7 @@ X = vectorizer.fit_transform(url_list)
 
 X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2, random_state=42)
 
-logit = LogisticRegression(solver='liblinear')	
+logit = LogisticRegression(solver='sag')	
 logit.fit(X_train, y_train)
 
 #print("Accuracy ",logit.score(X_test, y_test))
@@ -60,5 +60,5 @@ logit.fit(X_train, y_train)
 pickle.dump(logit, open('model.pkl','wb'))
 
 # Loading model to compare the results
-model = pickle.load(open('model.pkl','rb'))
+#model = pickle.load(open('model.pkl','rb'))
 
