@@ -1,0 +1,216 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url("../images/AI-in-cybersecurity.png");
+
+    background-size: cover;
+    background-position: center;
+    
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    
+}
+
+.nav{
+    list-style-type: none;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.nav li{
+    display: inline;
+    margin-left: 5px;
+    
+}
+
+.nav li a{
+    text-decoration: none;
+    color: #ffffff;
+    padding: 5px 25px;
+    border: 1px;
+    border-radius: 8px;
+
+    transition: 0.5s ease;
+
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+
+    letter-spacing: 0.8px;
+}
+
+.nav li a:hover{
+    background: aqua;
+    color: #000000;
+
+    box-shadow: 0 0 5px #21ecf3, 0 0 5px #21ecf3,
+                0 0 10px #21ecf3, 0 0 10px #21ecf3;
+
+}
+
+.modify-form{
+    font-family: 'Ubuntu', sans-serif;
+    color: #ffffff;
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    margin: auto;
+
+    height: 420px;
+    width: 350px;
+
+    padding: 40px;
+
+    text-align: center;    
+    background-color: rgba(10, 10, 10, 0.9);
+    box-shadow: 0 0 5px #f5cb12, 0 0 5px #f5cb12,
+                0 0 10px #f5cb12, 0 0 10px #f5cb12;
+}
+
+.modify-form h1{
+    color: #ffffff;
+    margin-bottom: 30px;
+
+    text-transform: uppercase;
+
+}
+
+.modify-form input[type="text"]{
+    background: none;
+    display: block;
+    
+    margin: 20px auto;
+
+    text-align: center;
+    border: 2px solid #3498db;
+
+    padding: 14px 10px;
+    width: 200px;
+
+    outline: none;
+    
+    color: #ffffff;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.modify-form input[type="text"]:focus{
+    width: 250px;
+
+    border-color: #2ecc71;
+
+}
+
+.modify-form input[type="submit"]{
+    background: none;
+    display: block;
+    
+    font-weight: 550;
+    font-family: 'Ubuntu', sans-serif;
+
+    margin: 40px auto;
+
+    text-align: center;
+    border: 2px solid #2ecc71;
+
+    padding: 14px 40px;
+
+    outline: none;
+    cursor: pointer;
+
+    color: #ffffff;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.modify-form input[type="submit"]:hover{
+    background-color: #2ecc71;
+    color: #000000;
+
+    font-weight: 900;
+
+    box-shadow: 0 0 5px #2ecc71, 0 0 5px #2ecc71,
+                0 0 10px #2ecc71, 0 0 10px #2ecc71;
+
+}
+
+.modify-form a{
+    text-decoration: none;
+    transition: 0.2s;
+    color: rgb(245, 203, 18);
+}
+
+.modify-form a:hover{
+    transition: 0.5s;
+    color: #26ff00f3;
+}
+
+.alert-success {
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    margin: 10px auto;
+
+    height: 35px;
+    width: 300px;
+
+    padding: 10px;
+    background-color: rgba(10, 10, 10, 0.9);
+    
+    box-shadow: 0 0 5px #00c851, 0 0 5px #00c851,
+                0 0 10px #00c851, 0 0 10px #00c851;
+
+    color: white;
+}
+
+.alert-danger {
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    margin: 10px auto;
+
+    height: 35px;
+    width: 300px;
+
+    padding: 10px;
+    background-color: rgba(10, 10, 10, 0.9);
+    
+    box-shadow: 0 0 5px #f80505, 0 0 5px #f80505,
+                0 0 10px #f80505, 0 0 10px #f80505;
+
+    color: white;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
