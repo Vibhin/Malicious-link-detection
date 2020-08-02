@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="../static/css/stylesheet-account.css">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+
+        <title>Account Page</title>
+
+        <style>
+            body{
+                background-image: url("/static/images/AI-in-cybersecurity.png");
+                background-size: cover;
+                background-position: center;
+                
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div class="main">
+            <ul class="nav">
+                <li><a href="home">Home</a></li>
+                <!-- <li><a href="about">About</a></li> -->
+                {% if current_user.is_authenticated %}
+                    <li><a href="account">Account</a></li>
+                    <li><a href="test">Validate</a></li>
+                    <li><a href="logout">Logout</a></li>
+                {% else %}
+                    <li><a href="login">Login</a></li>
+                    <li><a href="register">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert-{{ category }}">
+                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+
+        <div class="description">
+            {% if current_user.email.split("@")[-1] == "rmkec.ac.in" %}
+                <h1>Profile - Cyber Security Official</h1>
+            
+            {% else %}
+                <h1>Profile - User</h1>
+            
+            {% endif %}
+            
+            <p>
+                Name: {{ current_user.username }}<br><br>
+                Mail ID: {{ current_user.email }}
+            </p>
+        </div>
+
+    </body>
+
+</html>
