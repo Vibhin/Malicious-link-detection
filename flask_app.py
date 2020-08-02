@@ -3,10 +3,14 @@ from forms import RegistrationForm, LoginForm
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
+
 import pickle
 from sklearn.feature_extraction.text import TfidfVectorizer
 import model as md
 import requests
+import ipinfo
+import socket
+from pprint import pprint
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "f548afcdab7da076d52652d8a7c9bf81"
@@ -17,6 +21,10 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = "login"
+
+api_token = "e55bc9f614e02b"
+handler = ipinfo.getHandler(api_token)
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -127,12 +135,13 @@ def test():
 
     print(current_user.email)
 
-    return render_template("test.html")
+    return render_template("test.html", prediction=None)
 
 @app.route("/predict", methods=["GET", "POST"])
 @login_required
 def predict():
     
+    prediction = ""
     input_url = request.form.get("URL")
     https_flag = False
 
@@ -153,6 +162,7 @@ def predict():
 
     print(prediction)
 
+    inp_url = input_url
     certificate_report = "Certificate expired"
 
     try:
@@ -166,6 +176,7 @@ def predict():
     finally:
         print(input_url, https_flag, certificate_report)
 
+        
         return render_template("test.html", prediction=prediction[0], https_status=https_flag, certificate=certificate_report)
 
 @app.route("/modify", methods=["GET", "POST"])
@@ -224,6 +235,36 @@ def modify():
         return redirect(url_for("test"))
 
     return render_template("modify.html")
+
+@app.route("/get_details", methods=["GET", "POST"])
+@login_required
+def get_details():
+
+    print(current_user.email)
+
+    return render_template("get_details.html")
+
+
+@app.route("/details", methods=["GET", "POST"])
+@login_required
+def url_details():
+    inp_url = request.form.get("URL")
+
+    inp_url = inp_url.replace("https://", "").strip()
+    inp_url = inp_url.replace("www.", "").strip()
+    inp_url = inp_url.replace("http://", "").strip()
+
+
+    infolist = socket.getaddrinfo(inp_url, port=80)
+    ip_address = infolist[-1][-1][0]
+
+    details = handler.getDetails(infolist[-1][-1][0])
+
+    #print(ip_address)
+    print(inp_url)
+    pprint(details.all)
+
+    return render_template("details.html", details=details)
     
 if __name__ == "__main__":
     app.run(debug=True)
