@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="../static/css/stylesheet-details.css">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+
+        <title>Details Page</title>
+
+        <style>
+            body{
+                background-image: url("/static/images/AI-in-cybersecurity.png");
+                background-size: cover;
+                background-position: center;
+                
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div class="main">
+            <ul class="nav">
+                <li><a href="home">Home</a></li>
+                <!-- <li><a href="about">About</a></li> -->
+                {% if current_user.is_authenticated %}
+                    <li><a href="account">Account</a></li>
+                    <li><a href="test">Validate</a></li>
+                    <li><a href="logout">Logout</a></li>
+                {% else %}
+                    <li><a href="login">Login</a></li>
+                    <li><a href="register">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        
+            <div class="description">
+                <p>
+                    URL Details
+                    <br>
+                    IP Address:&nbsp&nbsp{{ details.ip }}<br>
+                    Postal No:&nbsp&nbsp{{ details.postal }}<br>
+                    City:&nbsp&nbsp{{ details.city }}<br>
+                    Country:&nbsp&nbsp{{ details.country_name }}<br>
+                    VPN enabled:&nbsp&nbsp{{ details.privacy.vpn }}<br>
+                    ASN Name:&nbsp&nbsp{{ details.asn.name }}<br>
+                    ASN Domain:&nbsp&nbsp{{ details.asn.domain }}<br>
+                    ASN Type:&nbsp&nbsp{{ details.asn.type }}<br>
+
+                </p>
+            </div>
+
+        </form>
+
+    </body>
+
+</html>
