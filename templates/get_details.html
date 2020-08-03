@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="../static/css/stylesheet-test.css">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
 
-        <title>Validate Page</title>
+        <title>Details Page</title>
 
         <style>
             body{
@@ -31,6 +31,7 @@
                 {% if current_user.is_authenticated %}
                     <li><a href="account">Account</a></li>
                     <li><a href="test">Validate</a></li>
+                    <li><a href="twitter">Social Media</a></li>
                     <li><a href="logout">Logout</a></li>
                 {% else %}
                     <li><a href="login">Login</a></li>
