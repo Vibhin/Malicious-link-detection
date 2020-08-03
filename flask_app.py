@@ -10,6 +10,7 @@ import model as md
 import requests
 import ipinfo
 import socket
+import twitterWebScrap
 from pprint import pprint
 
 app = Flask(__name__)
@@ -265,6 +266,51 @@ def url_details():
     pprint(details.all)
 
     return render_template("details.html", details=details)
+
+
+@app.route("/twitter", methods=["GET", "POST"])
+def twitter():
+
+    return render_template("twitter.html")
+
+@app.route("/twitter_table", methods=["GET", "POST"])
+def twitter_table():
     
+    items = []
+    entries = twitterWebScrap.get_info(word=request.form.get("word"))
+
+    for entry in entries:
+        entry_URL = entry[-1]
+
+        try:
+            entry_URL = requests.head(entry[-1]).headers["location"]
+        
+        except:
+            pass
+        
+        entry_URL = entry_URL.replace("https://", "").strip()
+        entry_URL = entry_URL.replace("http://", "").strip()
+        entry_URL = entry_URL.replace("www.", "").strip()
+
+        print(str(entry_URL.strip("/") + "/").split(), end=" ")
+
+        X_predict = md.vectorizer.transform(str(entry_URL.strip("/") + "/").split())
+        prediction = model.predict(X_predict)
+
+        print(prediction)
+
+        if prediction[0] == "bad":
+            items.append([entry[0], entry[1], entry[2], entry_URL])
+    
+    print(items[:5])
+    
+    
+    if len(items[:5]) == 0:
+        flash("No entries to show", "danger")
+        return redirect(url_for("twitter"))
+    
+    else:
+        return render_template("twitter-table.html", table=items[:5])
+
 if __name__ == "__main__":
     app.run(debug=True)
